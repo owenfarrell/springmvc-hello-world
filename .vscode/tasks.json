@@ -1,0 +1,43 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "clean",
+            "command": "mvn",
+            "args": [
+                "--batch-mode",
+                "clean"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "taskName": "install",
+            "suppressTaskName": false,
+            "command": "mvn",
+            "args": [
+                "--batch-mode",
+                "-DskipTests",
+                "install"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "taskName": "verify",
+            "suppressTaskName": false,
+            "command": "mvn",
+            "args": [
+                "--batch-mode",
+                "verify"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
