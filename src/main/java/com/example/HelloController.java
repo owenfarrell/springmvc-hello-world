@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("hello")
-public class HelloWorldController {
+public class HelloController {
 
     private final Logger LOG = LoggerFactory.getLogger(getClass());
 
