@@ -23,17 +23,24 @@ public class SanitizingController {
         LOG.info("Checking {} attributes from request", parameterMap.size());
         
         for (Map.Entry<String, String[]> parameter : parameterMap.entrySet()) {
+            // Get the raw version of the parameter name
             String parameterName = parameter.getKey();
+            // Calculate a sanitized version of the parameter name
             String sanitizedName = policy.sanitize(parameterName);
+            // If the raw version is not sanitary, redirect to the error view
             if (Objects.equals(parameterName, sanitizedName) == false) return "error";
             
             String[] parameterValueArray = parameter.getValue();
+            // For each raw version of the parameter value
             for (String parameterValue : parameterValueArray) {
+                // Calculate a sanitized version of the parameter value
                 String sanitizedValue = policy.sanitize(parameterValue);
+                // If the raw version is not sanitary, redirect to the error view
                 if (Objects.equals(parameterValue, sanitizedValue) == false) return "error";
             }
         }
 
+        // Redirect to the sanitizing view
         return "sanitizing";
     }
 }
