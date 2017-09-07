@@ -14,8 +14,18 @@
             "problemMatcher": []
         },
         {
+            "taskName": "package",
+            "command": "mvn",
+            "args": [
+                "--batch-mode",
+                "-DskipTests",
+                "package"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
             "taskName": "install",
-            "suppressTaskName": false,
             "command": "mvn",
             "args": [
                 "--batch-mode",
@@ -27,7 +37,6 @@
         },
         {
             "taskName": "verify",
-            "suppressTaskName": false,
             "command": "mvn",
             "args": [
                 "--batch-mode",
@@ -36,6 +45,19 @@
             "group": {
                 "kind": "test",
                 "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "taskName": "run",
+            "command": "mvn",
+            "args": [
+                "exec:exec"
+            ],
+            "dependsOn": "package",
+            "group": "build",
+            "presentation": {
+                "panel": "dedicated"
             },
             "problemMatcher": []
         }
