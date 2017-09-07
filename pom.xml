@@ -40,13 +40,18 @@
             <artifactId>slf4j-api</artifactId>
             <version>${version.org.slf4j}</version>
         </dependency>
-        
+
         <!-- Web Application Dependencies -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+            <artifactId>owasp-java-html-sanitizer</artifactId>
+            <version>20170515.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -67,7 +72,7 @@
         <version.org.slf4j>1.7.25</version.org.slf4j>
     </properties>
 
-    <!-- Build Settings -->  
+    <!-- Build Settings -->
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -112,7 +117,7 @@
         <url>https://travis-ci.org/owenfarrell/springmvc-hello-world</url>
     </ciManagement>
     <inceptionYear>2017</inceptionYear>
-
+    
     <licenses>
         <license>
             <name>MIT License</name>
