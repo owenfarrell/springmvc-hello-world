@@ -33,7 +33,7 @@
             </div>
         </c:if>
         <div>
-            <h3>Add an attribute to the session</h3>
+            <h3>Submit a request parameter</h3>
             <form action="app/views/sanitizing" method="post">
                 <input name="name" type="text" />
                 <input name="value" type="text" />
