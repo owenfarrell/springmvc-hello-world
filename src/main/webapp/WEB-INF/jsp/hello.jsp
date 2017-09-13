@@ -39,5 +39,9 @@
                 <input type="submit" />
             </form>
         </div>
+        <div>
+            <p/>
+            <a href="app/views/sanitizing">Check out this sanitization-by-dispatching approach</a>
+        </div>
     </body>
 </html>
