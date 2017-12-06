@@ -120,9 +120,6 @@
     <!-- More Project Information -->
     <name>SpringMVC Hello World Web Application</name>
     <description>A simple web application illustrating how to structure a SpringMVC project.</description>
-    <prerequisites>
-        <maven>3.0</maven>
-    </prerequisites>
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/owenfarrell/springmvc-hello-world/issues</url>
