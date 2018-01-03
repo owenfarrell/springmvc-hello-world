@@ -1,0 +1,85 @@
+// =========================================================================
+// Plugin Declaration
+// =========================================================================
+
+plugins {
+    id 'com.github.ben-manes.versions' version '0.17.0'
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
+}
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+
+// =========================================================================
+// Project Information
+// =========================================================================
+
+description = 'A simple web application illustrating how to structure a SpringMVC project.'
+
+// =========================================================================
+// Project Attributes
+// =========================================================================
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8 
+
+repositories {
+    mavenCentral()
+}
+
+// =========================================================================
+// Dependency Management
+// =========================================================================
+
+dependencies {
+    // Logging Dependencies
+    runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.+', force: true
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+', force: true
+
+    // OWASP Sanitizer
+    implementation group: 'com.googlecode.owasp-java-html-sanitizer', name: 'owasp-java-html-sanitizer', version: '20170515.1'
+
+    // Spring
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '4.3.+', force: true
+
+    // Spring Boot
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    
+    // Apache Tomcat
+    providedRuntime group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper'
+    providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
+
+    // Java Servlet
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0', force: true
+    compileOnly group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1', force: true
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+}
+
+// =========================================================================
+// Plugin Task Configuration
+// =========================================================================
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
+}
+
+springBoot.backupSource = false
+
+wrapper {
+    distributionType = 'all'
+    gradleVersion = '4.4.1'
+}
+
+// =========================================================================
+// Custom Task Definition
+// =========================================================================
+
+task stage(type: Copy, dependsOn: 'assemble') {
+    into temporaryDir
+    from war.archivePath
+    rename (war.archiveName, 'app.war')
+}

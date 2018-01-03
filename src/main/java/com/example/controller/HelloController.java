@@ -1,4 +1,4 @@
-package com.example;
+package com.example.controller;
 
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;

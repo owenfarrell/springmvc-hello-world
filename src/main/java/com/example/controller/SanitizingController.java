@@ -1,4 +1,4 @@
-package com.example;
+package com.example.controller;
 
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +17,7 @@ public class SanitizingController {
     private final Logger LOG = LoggerFactory.getLogger(getClass());
     private final PolicyFactory policy = new HtmlPolicyBuilder().toFactory();
 
-    @RequestMapping()
+    @RequestMapping
     public String verifyRequest(HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         LOG.info("Checking {} attributes from request", parameterMap.size());

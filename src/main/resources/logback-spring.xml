@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Include default logging configuration provided by Spring Boot -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <!-- When running under a Spring Boot profile -->
+    <springProfile name="boot">
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+        <root>
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+    <!-- When running within a Tomcat container -->
+    <springProfile name="!boot">
+        <property name="LOG_FILE" value="${catalina.base}/logs/spring.log" />
+        <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+        <root>
+            <appender-ref ref="FILE" />
+        </root>
+    </springProfile>
+
+    <!-- Define logger levels -->
+    <logger name="org.springframework.web" level="DEBUG" />
+    <root level="INFO" />
+
+</configuration>
