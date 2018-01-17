@@ -38,7 +38,7 @@
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="app/views/hello">Vulnerable</a></li>
+                            <li><a href="hello">Vulnerable</a></li>
                             <li class="active"><a href="#">Sanitizing</a></li>
                         </ul>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="sub-header">
                     <h3>Submit a request parameter</h3>
                 </div>
-                <form action="app/views/sanitizing" class="form-horizontal" method="post">
+                <form action="sanitizing" class="form-horizontal" method="post">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="name">Parameter Name:</label>
                         <div class="col-sm-10">
