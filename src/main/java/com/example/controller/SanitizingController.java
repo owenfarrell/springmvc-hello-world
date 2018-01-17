@@ -36,7 +36,7 @@ public class SanitizingController {
                 // Calculate a sanitized version of the parameter value
                 String sanitizedValue = policy.sanitize(parameterValue);
                 // If the raw version is not sanitary, redirect to the error view
-                if (Objects.equals(parameterValue, sanitizedValue) == false) return "error";
+                if (Objects.equals(parameterValue, sanitizedValue) == false) return "notSafe";
             }
         }
 
