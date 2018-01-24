@@ -40,7 +40,7 @@ dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+', force: true
 
     // OWASP Sanitizer
-    implementation group: 'com.googlecode.owasp-java-html-sanitizer', name: 'owasp-java-html-sanitizer', version: '20170515.1'
+    implementation group: 'com.googlecode.owasp-java-html-sanitizer', name: 'owasp-java-html-sanitizer', version: '20171016.1'
 
     // Spring
     implementation group: 'org.springframework', name: 'spring-webmvc', version: '4.3.+', force: true
@@ -71,7 +71,7 @@ springBoot.backupSource = false
 
 wrapper {
     distributionType = 'all'
-    gradleVersion = '4.4.1'
+    gradleVersion = '4.5'
 }
 
 // =========================================================================
