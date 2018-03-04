@@ -14,7 +14,7 @@
 
     <!-- When running within a Tomcat container -->
     <springProfile name="!boot">
-        <property name="LOG_FILE" value="${catalina.base}/logs/spring.log" />
+        <property name="LOG_FILE" value="${catalina.base}/logs/@application.name@.log" />
         <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
         <root>
             <appender-ref ref="FILE" />

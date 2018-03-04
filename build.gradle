@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.*
+
 // =========================================================================
 // Plugin Declaration
 // =========================================================================
@@ -67,6 +69,12 @@ dependencies {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
+}
+
+processResources {
+    filter ReplaceTokens, tokens: [
+        'application.name': project.name
+    ]
 }
 
 springBoot {
