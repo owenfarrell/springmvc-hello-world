@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Include default logging configuration provided by Spring Boot -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <!-- When running within a Tomcat container -->
+    <property name="LOG_FILE" value="${java.io.tmpdir}/spring.log" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+
+    <!-- Define logger levels -->
+    <logger name="org.springframework.web" level="TRACE" />
+    <root level="DEBUG">
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

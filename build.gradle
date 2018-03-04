@@ -1,5 +1,3 @@
-import org.apache.tools.ant.filters.*
-
 // =========================================================================
 // Plugin Declaration
 // =========================================================================
@@ -71,14 +69,14 @@ tasks.withType(JavaCompile) {
     options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
 }
 
-processResources {
-    filter ReplaceTokens, tokens: [
-        'application.name': project.name
-    ]
-}
-
 springBoot {
     backupSource = false
+}
+
+test {
+    systemProperties = [
+        'java.io.tmpdir': temporaryDir.absolutePath
+    ]
 }
 
 wrapper {
