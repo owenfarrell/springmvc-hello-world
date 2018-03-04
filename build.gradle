@@ -9,6 +9,7 @@ plugins {
 
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'jacoco'
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'war'
@@ -47,6 +48,7 @@ dependencies {
 
     // Spring Boot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
     
     // Apache Tomcat
     providedRuntime group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper'
@@ -67,11 +69,13 @@ tasks.withType(JavaCompile) {
     options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
 }
 
-springBoot.backupSource = false
+springBoot {
+    backupSource = false
+}
 
 wrapper {
     distributionType = 'all'
-    gradleVersion = '4.5'
+    gradleVersion = '4.6'
 }
 
 // =========================================================================
