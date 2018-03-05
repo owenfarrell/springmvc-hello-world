@@ -61,22 +61,56 @@ dependencies {
 }
 
 // =========================================================================
-// Plugin Task Configuration
+// Task Type Configuration
 // =========================================================================
+
+tasks.withType(JacocoCoverageVerification) {
+    mustRunAfter tasks.withType(JacocoReport)
+}
+check.dependsOn tasks.withType(JacocoCoverageVerification)
+
+tasks.withType(JacocoReport) {
+    reports.xml.enabled true
+}
+check.dependsOn tasks.withType(JacocoReport)
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
 }
 
-springBoot {
-    backupSource = false
-}
-
-test {
+tasks.withType(Test) {
+    jacoco.append = false
     systemProperties = [
         'java.io.tmpdir': temporaryDir.absolutePath
     ]
+}
+
+// =========================================================================
+// Plugin Task Configuration
+// =========================================================================
+
+jacoco {
+    toolVersion = '0.8.0'
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            excludes = [
+                'com.example.Application',
+                'com.example.config.HelloWorldInitializer'
+            ]
+            limit {
+                minimum = 0.9
+            }
+        }
+    }
+}
+
+springBoot {
+    backupSource = false
 }
 
 wrapper {
@@ -85,7 +119,7 @@ wrapper {
 }
 
 // =========================================================================
-// Custom Task Definition
+// Custom Task Definitions
 // =========================================================================
 
 task stage(type: Copy, dependsOn: 'assemble') {
