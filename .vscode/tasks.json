@@ -4,43 +4,50 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "clean",
-            "command": "mvn",
+            "label": "Clean",
+            "command": "./gradlew",
+            "windows": {
+                "command": "gradew.bat"
+            },
             "args": [
-                "--batch-mode",
                 "clean"
             ],
-            "group": "build",
             "problemMatcher": []
         },
         {
-            "label": "package",
-            "command": "mvn",
+            "label": "Show Tasks",
+            "command": "./gradlew",
+            "windows": {
+                "command": "gradew.bat"
+            },
             "args": [
-                "--batch-mode",
-                "-DskipTests",
-                "package"
+                "tasks"
             ],
-            "group": "build",
             "problemMatcher": []
         },
         {
-            "label": "install",
-            "command": "mvn",
+            "label": "Assemble",
+            "command": "./gradlew",
+            "windows": {
+                "command": "gradew.bat"
+            },
             "args": [
-                "--batch-mode",
-                "-DskipTests",
-                "install"
+                "assemble"
             ],
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "problemMatcher": []
         },
         {
-            "label": "verify",
-            "command": "mvn",
+            "label": "Verify",
+            "command": "./gradlew",
+            "windows": {
+                "command": "gradew.bat"
+            },
             "args": [
-                "--batch-mode",
-                "verify"
+                "check"
             ],
             "group": {
                 "kind": "test",
@@ -49,13 +56,14 @@
             "problemMatcher": []
         },
         {
-            "label": "run",
-            "command": "mvn",
+            "label": "Run",
+            "command": "./gradlew",
+            "windows": {
+                "command": "gradew.bat"
+            },
             "args": [
-                "exec:exec"
+                "bootRun"
             ],
-            "dependsOn": "package",
-            "group": "build",
             "presentation": {
                 "panel": "dedicated"
             },
