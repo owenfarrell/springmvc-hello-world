@@ -4,7 +4,7 @@
 
 plugins {
     id 'com.github.ben-manes.versions' version '0.17.0'
-    id 'org.springframework.boot' version '1.5.9.RELEASE'
+    id 'org.springframework.boot' version '1.5.10.RELEASE'
 }
 
 apply plugin: 'eclipse'
@@ -35,16 +35,14 @@ repositories {
 // Dependency Management
 // =========================================================================
 
-dependencies {
-    // Logging Dependencies
-    runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.+', force: true
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+', force: true
+ext['logback.version'] = '1.2.3'
+ext['jackson.version'] = '2.9.4'
+ext['slf4j.version'] = '1.7.25'
+ext['spring.version'] = '4.3.14.RELEASE'
 
+dependencies {
     // OWASP Sanitizer
     implementation group: 'com.googlecode.owasp-java-html-sanitizer', name: 'owasp-java-html-sanitizer', version: '20171016.1'
-
-    // Spring
-    implementation group: 'org.springframework', name: 'spring-webmvc', version: '4.3.+', force: true
 
     // Spring Boot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
@@ -63,11 +61,6 @@ dependencies {
 // =========================================================================
 // Task Type Configuration
 // =========================================================================
-
-tasks.withType(JacocoCoverageVerification) {
-    mustRunAfter tasks.withType(JacocoReport)
-}
-check.dependsOn tasks.withType(JacocoCoverageVerification)
 
 tasks.withType(JacocoReport) {
     reports.xml.enabled true
@@ -94,19 +87,8 @@ jacoco {
     toolVersion = '0.8.0'
 }
 
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            element = 'CLASS'
-            excludes = [
-                'com.example.Application',
-                'com.example.config.HelloWorldInitializer'
-            ]
-            limit {
-                minimum = 0.9
-            }
-        }
-    }
+processResources {
+    expand(project.properties)
 }
 
 springBoot {
@@ -123,7 +105,7 @@ wrapper {
 // =========================================================================
 
 task stage(type: Copy, dependsOn: 'assemble') {
-    into temporaryDir
     from war.archivePath
+    into temporaryDir
     rename (war.archiveName, 'app.war')
 }
