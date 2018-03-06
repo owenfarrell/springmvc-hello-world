@@ -4,7 +4,8 @@
 
 plugins {
     id 'com.github.ben-manes.versions' version '0.17.0'
-    id 'org.springframework.boot' version '1.5.10.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.4.RELEASE'
+    id 'org.springframework.boot' version '2.0.0.RELEASE'
 }
 
 apply plugin: 'eclipse'
@@ -35,10 +36,10 @@ repositories {
 // Dependency Management
 // =========================================================================
 
-ext['logback.version'] = '1.2.3'
-ext['jackson.version'] = '2.9.4'
-ext['slf4j.version'] = '1.7.25'
-ext['spring.version'] = '4.3.14.RELEASE'
+ext['logback.version'] = '1.2.+'
+ext['jackson.version'] = '2.9.+'
+ext['slf4j.version'] = '1.7.+'
+ext['spring.version'] = '5.0.+'
 
 dependencies {
     // OWASP Sanitizer
@@ -87,10 +88,6 @@ jacoco {
 
 processResources {
     expand(project.properties)
-}
-
-springBoot {
-    backupSource = false
 }
 
 wrapper {
