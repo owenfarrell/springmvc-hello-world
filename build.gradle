@@ -74,9 +74,7 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Test) {
     jacoco.append = false
-    systemProperties = [
-        'java.io.tmpdir': temporaryDir.absolutePath
-    ]
+    systemProperties['java.io.tmpdir'] = temporaryDir.absolutePath
 }
 
 // =========================================================================
@@ -96,7 +94,7 @@ springBoot {
 }
 
 wrapper {
-    distributionType = 'all'
+    distributionType = Wrapper.DistributionType.ALL
     gradleVersion = '4.6'
 }
 
