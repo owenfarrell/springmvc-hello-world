@@ -45,6 +45,15 @@ dependencies {
     // OWASP Sanitizer
     implementation group: 'com.googlecode.owasp-java-html-sanitizer', name: 'owasp-java-html-sanitizer', version: '20171016.1'
 
+    // Webjars
+    runtimeOnly group: 'org.webjars', name: 'webjars-locator', version: '0.33'
+    runtimeOnly group: 'org.webjars', name: 'bootstrap', version: '4.0.0-2'
+    runtimeOnly group: 'org.webjars', name: 'font-awesome', version: '4.7.0'
+    runtimeOnly group: 'org.webjars', name: 'html5shiv', version: '3.7.3-1'
+    runtimeOnly group: 'org.webjars', name: 'jquery', version: '3.3.1-1'
+    runtimeOnly group: 'org.webjars', name: 'popper.js', version: '1.12.9-1'
+    runtimeOnly group: 'org.webjars', name: 'respond', version: '1.4.2-1'
+
     // Spring Boot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
