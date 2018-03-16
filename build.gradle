@@ -57,7 +57,7 @@ dependencies {
     // Spring Boot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-    
+
     // Apache Tomcat
     providedRuntime group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper'
     providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
@@ -109,7 +109,7 @@ wrapper {
 // =========================================================================
 
 task stage(type: Copy, dependsOn: 'assemble') {
-    from war.archivePath
+    from bootWar.archivePath
     into temporaryDir
-    rename (war.archiveName, 'app.war')
+    rename (bootWar.archiveName, 'app.war')
 }
