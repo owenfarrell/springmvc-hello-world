@@ -4,8 +4,9 @@
 
 plugins {
     id 'com.github.ben-manes.versions' version '0.17.0'
-    id 'io.spring.dependency-management' version '1.0.4.RELEASE'
-    id 'org.springframework.boot' version '2.0.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.5.RELEASE'
+    id 'org.ajoberstar.grgit' version '2.2.0'
+    id 'org.springframework.boot' version '2.0.1.RELEASE'
 }
 
 apply plugin: 'eclipse'
@@ -25,12 +26,18 @@ description = 'A simple web application illustrating how to structure a SpringMV
 // Project Attributes
 // =========================================================================
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8 
-
-repositories {
-    mavenCentral()
+def head = grgit.head().abbreviatedId
+def gitDescription = grgit.describe(match: ['v*'])
+if (gitDescription == null) {
+    gitDescription = "v0.0-${grgit.log().size()}-${head}"
 }
+
+group = 'com.github.owenfarrell'
+version = gitDescription.substring(1)
+status = gitDescription.contains(head) ? grgit.branch.current.name == 'master' ? 'integration' : 'milestone' : 'release'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 // =========================================================================
 // Dependency Management
@@ -40,6 +47,10 @@ ext['logback.version'] = '1.2.+'
 ext['jackson.version'] = '2.9.+'
 ext['slf4j.version'] = '1.7.+'
 ext['spring.version'] = '5.0.+'
+
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     // OWASP Sanitizer
@@ -77,6 +88,10 @@ tasks.withType(JacocoReport) {
 }
 check.dependsOn tasks.withType(JacocoReport)
 
+tasks.withType(Jar) {
+    version = null
+}
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
@@ -92,7 +107,7 @@ tasks.withType(Test) {
 // =========================================================================
 
 jacoco {
-    toolVersion = '0.8.0'
+    toolVersion = '0.8.+'
 }
 
 processResources {
@@ -101,15 +116,5 @@ processResources {
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = '4.6'
-}
-
-// =========================================================================
-// Custom Task Definitions
-// =========================================================================
-
-task stage(type: Copy, dependsOn: 'assemble') {
-    from bootWar.archivePath
-    into temporaryDir
-    rename (bootWar.archiveName, 'app.war')
+    gradleVersion = '4.7'
 }
