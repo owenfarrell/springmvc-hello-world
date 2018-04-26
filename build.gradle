@@ -27,14 +27,10 @@ description = 'A simple web application illustrating how to structure a SpringMV
 // =========================================================================
 
 def head = grgit.head().abbreviatedId
-def gitDescription = grgit.describe(match: ['v*'])
-if (gitDescription == null) {
-    gitDescription = "v0.0-${grgit.log().size()}-${head}"
-}
 
 group = 'com.github.owenfarrell'
-version = gitDescription.substring(1)
-status = gitDescription.contains(head) ? grgit.branch.current.name == 'master' ? 'integration' : 'milestone' : 'release'
+version = grgit.describe(match: ['v*'])?.substring(1)?.replace(head, 'SNAPSHOT') ?: "0.0-${grgit.log().size()}-SNAPSHOT"
+status = version.endsWith('SNAPSHOT') == false ? 'release' : grgit.branch.current.name == 'master' ? 'milestone' : 'integration'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
