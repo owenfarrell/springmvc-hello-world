@@ -27,6 +27,7 @@ deploy:
     api_key:
       secure: TXqLZgb/NIGlgb+p5GuNiAJhDQFDQCBkRZCE1a7VafI/0WkRyXZsstRwQEj8MBSt9/fRMgFgDwjZWn1Fb+cuzeWKUYhD/e8P0DD+IKnbrtFezZ1QGncvgykP5FnMLx/0QsvcjwuvzG0C9uwRIXeoScce9kNk0KguddckkWQm/l84jRr6LhOAeL+LnL6eM6I/Z+NLmKCsOsXNTqQGOCXeY6KNI/MmEGq9ndjGTK8imdOWyQKTKgjylaERlEgnrTqpKFjMP15aQ472dr+1rd/MuE8Zp2JNNBSNGTCh7yvaLg0es51oJo2iMC7k7NXMJCLqKueAk+8qTnEv9IQ2Qz4vpF8xrD+qaHTXIzSILmQv7cGl4BPfliRpuNidwHOwk2CYx7CLf5imfebwKp9rzdssYDjrNQ59wRNLVR9u2i+cc3bc0TYAj6dfqTXfbk0bFObd4T7FKNSV2E4UvARxNMHE7mWfki8nU68hroXj4q4Ehzgm9LTSfB5nJv/XSgixj+TJvYJafd/KaIqMVR+yd5iPDocau5VK6eM9GRusA2PfV07BpSFZLYJ2WzgpUkRofuc40E50KDWvDeydi+KucXk4KF8RJJm0x2P0NQwciUvCFmgBfLeaNue/dKPIkYMNIIY/dnI8koCTeQp0Z9t8jeJOBx8EG9BMi38wUcaa93Jt3O8=
     file: build/libs/springmvc-hello-world.war
+    skip_cleanup: true
     on:
       repo: owenfarrell/springmvc-hello-world
       tags: true
