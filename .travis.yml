@@ -10,13 +10,20 @@ cache:
   - $HOME/.gradle/wrapper/
 
 deploy:
-  provider: cloudfoundry
-  api: https://api.run.pivotal.io
-  username: owen.farrell@gmail.com
-  password:
-    secure: B07aKHnLZ9ziRP/5jx7KQsu/TvyiFmztMZdrduZ8zBexznytGLrd1J3hs3c2kdL8yv5aMB+4E0QJMyuId8nTgKXRBhtm/s6tbqmnxkqEooiGeSsMfR/5x36iu1PicVLqPBp6/0yaLrve46jN95ca7XeVtUbCBDdhs9GHyPf2bkNG9hz/FxdMNH9+KG7u4aGCn9PSCEKqJMAH9FqWI+xzO8Q/G1L8PZ7QIE+ksIbm/aWS7Q+9J/VmwifsWSCiZuXlrnGmIz1L9nQdIGsSrr2EF64SxdxdpgDo8QygPpfEFljGb0FcFlo8lhENNlKL4Fcb9W9q2NiwaPZx0pQ+SgTsrEXshsxvX9ip0ZlAma61ZPQq7TjNJ8UHJJ9xtwxhgIpxL0stwuKFYjXWEQZqoLTp8zADni4b1Rma71eZVF+Vz+VBdWUU++t8BdGIgSkAGHX1uYiTJ0nllzkbQZuKNAsfBvN6fkH63qjX9IENQx0wZYRGWi/AFyp0m9kwjpLU/YxlWuI3elg2NI6gEHdkEeqhFx3L5SClpP1orHM3+rq3DpsjlkJbiNL6hJqshWmAxwsf1gwLltc0MdRRILkjjEQDkbiS90+LuklT6+JlU5O2iXFb3/6qxbvttTTRVjb1M4GwU/OVOWAlqjPmeR0WeMZAdJCbfNgRdROGwZphyQ2SmKw=
-  organization: owenfarrell
-  space: development
-  on:
-    repo: owenfarrell/springmvc-hello-world
-    tags: true
+  - provider: releases
+    api_key:
+      secure: TXqLZgb/NIGlgb+p5GuNiAJhDQFDQCBkRZCE1a7VafI/0WkRyXZsstRwQEj8MBSt9/fRMgFgDwjZWn1Fb+cuzeWKUYhD/e8P0DD+IKnbrtFezZ1QGncvgykP5FnMLx/0QsvcjwuvzG0C9uwRIXeoScce9kNk0KguddckkWQm/l84jRr6LhOAeL+LnL6eM6I/Z+NLmKCsOsXNTqQGOCXeY6KNI/MmEGq9ndjGTK8imdOWyQKTKgjylaERlEgnrTqpKFjMP15aQ472dr+1rd/MuE8Zp2JNNBSNGTCh7yvaLg0es51oJo2iMC7k7NXMJCLqKueAk+8qTnEv9IQ2Qz4vpF8xrD+qaHTXIzSILmQv7cGl4BPfliRpuNidwHOwk2CYx7CLf5imfebwKp9rzdssYDjrNQ59wRNLVR9u2i+cc3bc0TYAj6dfqTXfbk0bFObd4T7FKNSV2E4UvARxNMHE7mWfki8nU68hroXj4q4Ehzgm9LTSfB5nJv/XSgixj+TJvYJafd/KaIqMVR+yd5iPDocau5VK6eM9GRusA2PfV07BpSFZLYJ2WzgpUkRofuc40E50KDWvDeydi+KucXk4KF8RJJm0x2P0NQwciUvCFmgBfLeaNue/dKPIkYMNIIY/dnI8koCTeQp0Z9t8jeJOBx8EG9BMi38wUcaa93Jt3O8=
+    file: build/libs/springmvc-hello-world.war
+    on:
+      repo: owenfarrell/springmvc-hello-world
+      tags: true
+  - provider: cloudfoundry
+    api: https://api.run.pivotal.io
+    username: owen.farrell@gmail.com
+    password:
+      secure: B07aKHnLZ9ziRP/5jx7KQsu/TvyiFmztMZdrduZ8zBexznytGLrd1J3hs3c2kdL8yv5aMB+4E0QJMyuId8nTgKXRBhtm/s6tbqmnxkqEooiGeSsMfR/5x36iu1PicVLqPBp6/0yaLrve46jN95ca7XeVtUbCBDdhs9GHyPf2bkNG9hz/FxdMNH9+KG7u4aGCn9PSCEKqJMAH9FqWI+xzO8Q/G1L8PZ7QIE+ksIbm/aWS7Q+9J/VmwifsWSCiZuXlrnGmIz1L9nQdIGsSrr2EF64SxdxdpgDo8QygPpfEFljGb0FcFlo8lhENNlKL4Fcb9W9q2NiwaPZx0pQ+SgTsrEXshsxvX9ip0ZlAma61ZPQq7TjNJ8UHJJ9xtwxhgIpxL0stwuKFYjXWEQZqoLTp8zADni4b1Rma71eZVF+Vz+VBdWUU++t8BdGIgSkAGHX1uYiTJ0nllzkbQZuKNAsfBvN6fkH63qjX9IENQx0wZYRGWi/AFyp0m9kwjpLU/YxlWuI3elg2NI6gEHdkEeqhFx3L5SClpP1orHM3+rq3DpsjlkJbiNL6hJqshWmAxwsf1gwLltc0MdRRILkjjEQDkbiS90+LuklT6+JlU5O2iXFb3/6qxbvttTTRVjb1M4GwU/OVOWAlqjPmeR0WeMZAdJCbfNgRdROGwZphyQ2SmKw=
+    organization: owenfarrell
+    space: development
+    on:
+      repo: owenfarrell/springmvc-hello-world
+      tags: true
