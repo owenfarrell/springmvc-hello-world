@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("hello")
 public class HelloController {
 
-    private final Logger LOG = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @RequestMapping(method = RequestMethod.GET)
     public void show() {
-        LOG.info("Visited the main page");
+        log.info("Visited the main page");
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public void updateSession(@RequestParam("name") String name, @RequestParam("value") String value, HttpSession session) {
-        LOG.info("Adding attribute `{}` to session with value of `{}`", name, value);
+        log.info("Adding attribute `{}` to session with value of `{}`", name, value);
         session.setAttribute(name, value);
     }
 }
