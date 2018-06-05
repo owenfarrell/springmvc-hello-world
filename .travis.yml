@@ -1,13 +1,26 @@
 language: java
 
-before_cache:
-- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+addons:
+  sonarcloud:
+    organization: owenfarrell-github
+    token:
+      secure: rHWOnCV7uamoN8h59xjRDtVVndun6eEVAEnuhcvARaZ1HjD++WJe3eIaAGybgGc/FXOzpIXlONUYhlYdQ8rxiGN8nVjes/X/iSY6cQSx76SyJkaa1cY8A6ft1oBLQSn9bgHnJFpa/qFvEw1JLeYHsLTkqQAnIudLF8Ie9zAmQs41/Dp9OdDUDqh3zOA/8ScLXxE+p9aBTm5oep0qumPjwFNuf0uTZjQh0xsssD+wFjANksXiryoHan9PN7o9dLkZ2kCcRNmySa8u5vdeqssF+gGIUQyORpJZv1mmkYDGpW357Hovp4Ftq9U+ha3KA3R7RybVdqXymugJzx3SeLX/Xdhfkl+rB0knUhiyGavLV8MkavGV4pQ3IZ9Z1adFHfE/eDKLARhJuV68q/M5BlB22MezC19CLxANPyjYcV9ygertL122poSzMI15IfLYetJdh01oiTwjl4DGhQR0n9LYK+cYnKltLPPiU5Axltf3PT8/kCvA+MUyRkAjc6wlLF8ySMox0g0Y6qzTxQ1dY0qG7doR74cGWqkUS4QZ0txCJ4Y+bDKHHw9dZXFvqPQSR42Id4UxOSJlhqVp/wWH1qRI/CuUGWIdCspoAKgnCHZe8uctHBbgRYE0X6+S0jGaPChhlm7BBCo5KsYJfcB9I5GXVjndP1OYjJSeqak2sNvaGVo=
 
 cache:
   directories:
+  - .gradle
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
+  - $HOME/.sonar/cache
+
+
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+script:
+  - ./gradlew sonarqube
 
 deploy:
   - provider: releases
