@@ -65,6 +65,7 @@ dependencies {
     runtimeOnly group: 'org.webjars', name: 'respond', version: '1.4.2-1'
 
     // Spring Boot
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 
@@ -111,6 +112,10 @@ jacoco {
 
 processResources {
     expand(project.properties)
+}
+
+springBoot {
+    buildInfo()
 }
 
 wrapper {
