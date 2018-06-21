@@ -1,6 +1,11 @@
 language: java
 
 addons:
+  apt:
+    sources:
+      - heroku
+    packages:
+      - heroku-toolbelt
   sonarcloud:
     organization: owenfarrell-github
     token:
@@ -15,12 +20,16 @@ cache:
 
 
 
+script:
+  - ./gradlew sonarqube
+
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
-script:
-  - ./gradlew sonarqube
+
+before_deploy:
+  - heroku plugins:install heroku-cli-deploy
 
 deploy:
   - provider: releases
@@ -41,3 +50,8 @@ deploy:
     on:
       repo: owenfarrell/springmvc-hello-world
       tags: true
+  - provider: script
+    script: heroku deploy:jar build/libs/springmvc-hello-world.war --app springmvc-hello-world
+    skip_cleanup: true
+    on:
+      repo: owenfarrell/springmvc-hello-world
