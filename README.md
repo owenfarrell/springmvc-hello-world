@@ -1,7 +1,8 @@
 # SpringMVC Hello World Application
 
 [![Build Status](https://travis-ci.org/owenfarrell/springmvc-hello-world.svg?branch=master)](https://travis-ci.org/owenfarrell/springmvc-hello-world)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=springmvc-hello-world&svg=1)](https://springmvc-hello-world.herokuapp.com/)
+[![Heroku](https://img.shields.io/badge/Heroku-deployed-brightgreen.svg)](https://springmvc-hello-world.herokuapp.com/hello)
+[![CloudFoundry](https://img.shields.io/badge/CloudFoundry-deployed-brightgreen.svg)](https://springmvc-hello-world.cfapps.io/hello)
 [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=com.github.owenfarrell%3Aspringmvc-hello-world&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.github.owenfarrell%3Aspringmvc-hello-world)
 
 This application is for illustrative purposes only and demonstrates the ability to sanitizing a (potentially) dangerous through a dispatcher pattern implementation.

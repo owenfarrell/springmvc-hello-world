@@ -55,3 +55,4 @@ deploy:
     skip_cleanup: true
     on:
       repo: owenfarrell/springmvc-hello-world
+      tags: true
