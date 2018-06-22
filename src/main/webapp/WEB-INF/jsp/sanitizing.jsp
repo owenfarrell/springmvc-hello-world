@@ -18,6 +18,7 @@
         <!--[if lt IE 9]>
         <script src="/webjars/html5shiv/html5shiv.min.js"></script>
         <script src="/webjars/respond/respond.min.js"></script>
+        <![endif]-->
     </head>
 
     <body>
