@@ -73,7 +73,7 @@
                 <div class="sub-header">
                     <h3>Submit a request parameter</h3>
                 </div>
-                <form action="sanitizing" class="form-horizontal" method="post">
+                <form action="sanitizing" autocomplete="off" class="form-horizontal" method="post">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="name">Parameter Name:</label>
                         <div class="col-sm-10">

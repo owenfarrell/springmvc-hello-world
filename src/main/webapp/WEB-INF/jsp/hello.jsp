@@ -75,7 +75,7 @@
                 <div class="sub-header">
                     <h3>Add an attribute to the session</h3>
                 </div>
-                <form action="hello" class="form-horizontal" method="post">
+                <form action="hello" autocomplete="off" class="form-horizontal" method="post">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="name">Parameter Name:</label>
                         <div class="col-sm-10">
