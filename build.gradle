@@ -62,11 +62,12 @@ dependencies {
     runtimeOnly group: 'org.webjars', name: 'font-awesome', version: '5.0.13'
     runtimeOnly group: 'org.webjars', name: 'html5shiv', version: '3.7.3-1'
     runtimeOnly group: 'org.webjars', name: 'jquery', version: '3.3.1-1'
-    runtimeOnly group: 'org.webjars', name: 'popper.js', version: '1.14.1'
+    runtimeOnly group: 'org.webjars', name: 'popper.js', version: '1.12.9-1'
     runtimeOnly group: 'org.webjars', name: 'respond', version: '1.4.2-1'
 
     // Spring Boot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 
