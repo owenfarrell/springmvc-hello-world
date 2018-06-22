@@ -3,11 +3,11 @@
 // =========================================================================
 
 plugins {
-    id 'com.github.ben-manes.versions' version '0.17.0'
+    id 'com.github.ben-manes.versions' version '0.20.0'
     id 'io.spring.dependency-management' version '1.0.5.RELEASE'
     id 'org.ajoberstar.grgit' version '2.2.1'
     id 'org.sonarqube' version '2.6.2'
-    id 'org.springframework.boot' version '2.0.2.RELEASE'
+    id 'org.springframework.boot' version '2.0.3.RELEASE'
 }
 
 apply plugin: 'eclipse'
@@ -58,8 +58,8 @@ dependencies {
 
     // Webjars
     runtimeOnly group: 'org.webjars', name: 'webjars-locator', version: '0.34'
-    runtimeOnly group: 'org.webjars', name: 'bootstrap', version: '4.1.0'
-    runtimeOnly group: 'org.webjars', name: 'font-awesome', version: '5.0.13'
+    runtimeOnly group: 'org.webjars', name: 'bootstrap', version: '4.1.1'
+    runtimeOnly group: 'org.webjars', name: 'font-awesome', version: '5.0.13-2'
     runtimeOnly group: 'org.webjars', name: 'html5shiv', version: '3.7.3-1'
     runtimeOnly group: 'org.webjars', name: 'jquery', version: '3.3.1-1'
     runtimeOnly group: 'org.webjars', name: 'popper.js', version: '1.12.9-1'
@@ -122,5 +122,5 @@ springBoot {
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = '4.7'
+    gradleVersion = '4.8.1'
 }
