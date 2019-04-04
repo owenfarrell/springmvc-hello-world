@@ -13,7 +13,7 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
         <!-- Fontawesome -->
-        <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/webjars/font-awesome/web-fonts-with-css/css/fontawesome.min.css">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="/webjars/html5shiv/html5shiv.min.js"></script>
