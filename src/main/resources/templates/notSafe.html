@@ -1,23 +1,19 @@
-<%@ page import="java.net.InetAddress" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>${pageContext.servletContext.servletContextName}</title>
-        <base href="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${pageContext.request.contextPath}/" />
+        <title th:text="${#servletContext.getServletContextName()}">Servlet Context Name</title>
         <!-- Bootstrap -->
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
         <!-- Fontawesome -->
-        <link rel="stylesheet" href="/webjars/font-awesome/web-fonts-with-css/css/fontawesome.min.css">
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/web-fonts-with-css/css/fontawesome.min.css}">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
-        <script src="/webjars/html5shiv/html5shiv.min.js"></script>
-        <script src="/webjars/respond/respond.min.js"></script>
+        <script th:src="@{/webjars/html5shiv/html5shiv.min.js}"></script>
+        <script th:src="@{/webjars/respond/respond.min.js}"></script>
         <![endif]-->
     </head>
 
@@ -32,50 +28,32 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#" onclick="return false;">Vulnerable</a>
-                            <span class="sr-only">(current)</span>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="sanitizing">Sanitizing</a>
+                            <a class="nav-link" th:href="@{hello}">Vulnerable</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" onclick="return false;">Sanitizing</a>
+                            <span class="sr-only">(current)</span>
                         </li>
                     </ul>
                 </div>
             </nav>
 
             <div class="page-header">
-                <h1>Welcome to <%=InetAddress.getLocalHost().getHostName()%></h1>
+                <h1 th:text="${'Welcome to ' + @localhost.getHostName()}">Hostname</h1>
             </div>
 
-            <c:if test="${not empty sessionScope}">
-                <div class="sub-header">
-                    <h3>Current Session Contents</h3>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach items="${sessionScope}" var="sessionAttribute">
-                                <tr>
-                                    <td>${sessionAttribute.key}</td>
-                                    <td>${sessionAttribute.value}</td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-            </c:if>
-
+            <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                You can&apos;t write that!
+            </div>
+            
             <div class="jumbotron">
                 <div class="sub-header">
-                    <h3>Add an attribute to the session</h3>
+                    <h3>Submit a request parameter</h3>
                 </div>
-                <form action="hello" autocomplete="off" class="form-horizontal" method="post">
+                <form action="sanitizing" autocomplete="off" class="form-horizontal" method="post">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="name">Parameter Name:</label>
                         <div class="col-sm-10">
@@ -97,9 +75,9 @@
             </div>
         </div>
         <!-- Latest compiled and minified JavaScript -->
-        <script src="/webjars/jquery/jquery.min.js"></script>
-        <script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
-        <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </body>
 
 </html>

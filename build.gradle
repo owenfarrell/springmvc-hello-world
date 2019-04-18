@@ -16,7 +16,6 @@ apply plugin: 'idea'
 apply plugin: 'jacoco'
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'war'
 
 // =========================================================================
 // Project Information
@@ -64,17 +63,13 @@ dependencies {
     // Spring Boot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 
     // Apache Tomcat
-    providedRuntime group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper'
-    providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
-
-    // Java Servlet
-    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-    compileOnly group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
-    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+    runtimeOnly group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper'
+    runtimeOnly group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
 
     constraints {
         implementation('com.google.guava:guava:24.1.1-jre') {
@@ -113,7 +108,9 @@ tasks.withType(Test) {
 // =========================================================================
 
 processResources {
-    expand(project.properties)
+    filesMatching(['logback-spring.xml']) {
+        expand(project.properties)
+    }
 }
 
 springBoot {
